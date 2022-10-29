@@ -6,20 +6,16 @@ use Illuminate\Http\Request;
 use Auth;
 use Validator;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    //
-    
-    /**
-     * Create a new AuthController instance.
-     *
-     * @return void
-     */
+
     public function __construct()
     {
         $this->middleware('auth:api', ['except' => ['login','register']]);
     }
+
 
     /**
      * Get a JWT via given credentials.
@@ -27,6 +23,7 @@ class AuthController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function register(Request $request){
+
 
         $validator=Validator::make($request->all(),[
             'name'=>'required',
@@ -47,6 +44,7 @@ class AuthController extends Controller
 
     }
 
+
     public function login(Request $request)
     {
 
@@ -62,8 +60,6 @@ class AuthController extends Controller
             return response()->json(['error'=>'Unauthorized'],401);
         }
 
-
-      
         return $this -> createNewToken($token);
 
 
@@ -73,8 +69,9 @@ class AuthController extends Controller
             }
         return $this->respondWithToken($token);
         **/
-
     }
+
+
     public function createNewToken($token){
 
         return response()->json([
@@ -85,12 +82,14 @@ class AuthController extends Controller
 
         ]);
     }
-   
+
+
     /**
      * Get the authenticated User.
      *
      * @return \Illuminate\Http\JsonResponse
      */
+
     public function profile()
     {
         return response()->json(auth()->user());
@@ -125,7 +124,7 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    protected function respondWithToken($token)
+   /* protected function respondWithToken($token)
     {
         return response()->json([
             'access_token' => $token,
@@ -133,4 +132,5 @@ class AuthController extends Controller
             'expires_in' => auth()->factory()->getTTL() * 60
         ]);
     }
+    **/
 }
