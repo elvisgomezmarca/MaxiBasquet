@@ -14,14 +14,11 @@ class CreateRegistrosTable extends Migration
     public function up()
     {
         Schema::create('registros', function (Blueprint $table) {
-            $table->String('email')->unique();
-            $table->String('password');
-            $table->String('name');
-            $table->String('apellido');
+            $table->id();
+            $table->String('codigo')->unique();
             $table->String('rol');
-            $table->String('nacionalidad');
-            $table->String('sexo');
-            $table->String('edad');
+            $table->String('email')->unique();
+            $table->String('ci');
             $table->timestamps();
         });
     }

@@ -1,12 +1,11 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\API\DelegadoController;
+use App\Http\Controllers\API\JuezController;
 use App\Http\Controllers\API\JugadorController;
 use App\Http\Controllers\API\RegistroController;
-use App\Http\Controllers\API\JuezController;
-use App\Http\Controllers\API\DelegadoController;
+use App\Http\Controllers\Auth\AuthController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +47,8 @@ Route::group(['Middleware'=>'api'],function(){
     Route::post('logout', [AuthController::class, 'logout']);
     Route::post('refresh', [AuthController::class, 'refresh']);
     Route::get('profile', [AuthController::class, 'profile']);
+
+    Route::get('/index_registro', [RegistroController::class,'index']);
 
     //---------rutas jugador
     Route::get('/index-Jugador/{id}', [JugadorController::class,'index']);

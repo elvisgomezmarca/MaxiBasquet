@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-
+use App\Http\Controllers\Auth\Controller;
 use App\Models\Juez;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facade\file;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 
 class JuezController extends Controller
 {

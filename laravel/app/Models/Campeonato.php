@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Registro extends Model
+class Campeonato extends Model
 {
     use HasFactory;
-    protected $table= 'registros';
+    protected $table= 'campeonatos';
     protected $fillable= [
-        'codigo',
-        'rol',
-        'email',
-        'ci',
+        'nombre',
+        'fechaInicio',
+        'fechaFin',
+        'categoria',
 
     ];
 }
