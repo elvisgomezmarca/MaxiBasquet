@@ -4,8 +4,10 @@ use App\Http\Controllers\API\DelegadoController;
 use App\Http\Controllers\API\JuezController;
 use App\Http\Controllers\API\JugadorController;
 use App\Http\Controllers\API\RegistroController;
+use App\Http\Controllers\API\EquipoController;
 use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\RolPartidosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +44,7 @@ Route::group(['middleware' => 'api'//,
 Route::post('register',[AuthController::class,'register']);
 Route::post('login',[AuthController::class,'login']);
 Route::post('/pre-registro', [RegistroController::class,'store']);
+Route::get('/listar-puntos-orden',[EquipoController::class,'showOrden']);
 
 Route::group(['Middleware'=>'api'],function(){
     Route::post('logout', [AuthController::class, 'logout']);
@@ -69,4 +72,11 @@ Route::group(['Middleware'=>'api'],function(){
     Route::get('/listar-delegado',[DelegadoController::class,'show']);
     Route::put('/editar-delegado/{id}', [DelegadoController::class,'update']);
     Route::delete('/eliminar-delegado/{id}', [DelegadoController::class,'destroy']);
+
+    //------rutas Equipos
+    Route::get('/listar-equipos',[EquipoController::class,'show']);
+
+    //------rutas partidos
+    Route::get('/listar-partidos',[RolPartidosController::class,'show']);
+    Route::post('/add-partidos',[RolPartidosController::class,'store']);
 });
